@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.Xml.Linq;
 
 namespace EmployeeManagement.Models
 {
@@ -11,7 +13,18 @@ namespace EmployeeManagement.Models
         public string Password { get; set; }       
         public string ConfirmPassword { get; set; }
         [Required]
-        public Dept? Department { get; set; } 
-       
+        public Dept? Department { get; set; }
+
+        public string ToXmlString()
+        {
+            XElement employeeElement = new XElement("Employee",
+                new XElement("Id", Id),
+                new XElement("Name", Name),
+                new XElement("Email", Email),
+                new XElement("Department", Department.ToString())
+            );
+
+            return employeeElement.ToString();
+        }
     }
 }

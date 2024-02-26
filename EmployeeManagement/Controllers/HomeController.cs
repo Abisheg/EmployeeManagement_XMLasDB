@@ -1,88 +1,142 @@
 ﻿using EmployeeManagement.Models;
+using EmployeeManagement.Service;
 using EmployeeManagement.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using System.Collections.Generic;
+using System.Net;
+using System.Xml.Linq;
 
 namespace EmployeeManagement.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly MockEmployeeRepository _empRepo;
-
-        public HomeController()
+        private readonly EmployeeService service;
+        private readonly IConfiguration _configuration;
+        public HomeController(IConfiguration configuration)
         {
-            _empRepo = new MockEmployeeRepository();
+            service = new EmployeeService();
+            _configuration = configuration;
         }
 
         public ViewResult Index()
         {
-            var model = _empRepo.GetAllEmployee();
-            
+            var model = service.GetEmployees();
             return View(model);
         }
 
         public ViewResult Details(int Id)
         {
-            var model = _empRepo.GetEmployee(Id);
-
-            
-            var _empVM = new EmployeeViewModel()
-            {
-                Id = model.Id,
-                Name = model.Name,
-                Email = model.Email,
-                Department = model.Department
-            };
-            
-            return View(_empVM);
+            var model = (EmployeeViewModel)service.GetEmployee(Id);
+            return View(model);
         }
 
         [HttpGet]
-        public ViewResult Edit(int?Id)
+        public ActionResult Edit(int? Id)
         {
+            bool isDelete = false;
+            //View Bag is used here to show/hide fields
+            ViewBag.IsDelete = isDelete;
             if (Id == null)
             {
-                return View(new Employee());
+                Employee newEmployee = new Employee();
+                newEmployee.Id = 0;
+                return PartialView("_Edit", newEmployee);
             }
             else
             {
-                //get employee details
-                var _empModel = _empRepo.GetEmployee(1);
-                return View(_empModel);
+                var empModel = service.GetEmployee((int)Id);
+                return PartialView("_Edit", empModel);
             }
+        }
+        [HttpGet]
+        //Reused Edit page hiding all fields but passwords
+        public ActionResult Delete(int Id)
+        {
+            bool isDelete = true;
+            ViewBag.IsDelete = isDelete;
+            var empModel = service.GetEmployee((int)Id);
+            return PartialView("_Edit", empModel);
         }
 
         [HttpPost]
         public IActionResult Edit(Employee employeeModel)
         {
-            if (employeeModel.Id > 0 )
+            //setting IsDelete ViewBag is to differentiate between edit /delete
+            bool isDelete = false;
+            ViewBag.IsDelete = isDelete;
+
+            if (employeeModel.Id > 0)
             {
-                //update employee
-                return View();
+                return View("_Edit", employeeModel);
             }
             else
             {
-                //add employee
                 return View();
-            }           
-
-            //save changes
-
-            //if changes saved return to index
-
-            //if changes failed return employ edit view
-
+            }
         }
 
-        public IActionResult Remove(int Id)
+        [HttpPost]
+        public IActionResult Remove(int Id, string password, string confirmPassword)
         {
-            //Remove Record
+            // Assuming you have the logic to retrieve the employee for the given Id
+            string configPassword = _configuration["AppSettings:Password"];
 
-            //Save changes
+            // Validate the password before deleting
+            if (configPassword == confirmPassword && configPassword == password)
+            {
+                service.DeleteEmployee(Id);
 
-            //Redirect to index
-            return RedirectToAction("Index");
+                // Return a JSON success response
+                return Json(new { success = true, message = "Employee deleted successfully" });
+            }
+            else if (password != confirmPassword)
+            {
+                // Passwords should match
+                return Json(new { success = false, message = "Passwords should match" });
+            }
+            else
+            {
+                // Incorrect Password
+                return Json(new { success = false, message = "Incorrect Password" });
+            }
         }
 
+
+        [HttpPost]
+        public JsonResult SaveDetails(Employee employeeModel)
+        {
+            string password = _configuration["AppSettings:Password"];
+
+            if (employeeModel.Password == employeeModel.ConfirmPassword && employeeModel.Password == password)
+            {
+                if (employeeModel.Id > 0)
+                {
+                    // If id exists then updates existing value
+                    service.UpdateEmployee(employeeModel);
+                    return Json("Updated Successfully");
+                }
+                else
+                {
+                    // Adds Employee based on id value
+                    service.SaveEmployee(employeeModel);
+                    return Json("Saved Successfully");
+                }
+            }
+            else if (employeeModel.Password != employeeModel.ConfirmPassword)
+            {
+                Response.StatusCode = (int)System.Net.HttpStatusCode.BadRequest;
+                return Json("Passwords should match");
+            }
+
+            Response.StatusCode = (int)System.Net.HttpStatusCode.BadRequest;
+            return Json("Incorrect Password");
+        }
+
+        public ActionResult GetLogData()
+        {
+            return PartialView("_Log", service.GetLogData());
+        }
         
     }
 }

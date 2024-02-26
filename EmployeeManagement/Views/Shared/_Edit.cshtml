@@ -1,0 +1,92 @@
+﻿@model EmployeeManagement.Models.Employee
+@{
+    var isDelete = ViewBag.IsDelete as bool? ?? false;
+}
+
+<hr />
+<div class="toast-container position-fixed top-50 start-50 translate-middle p-3 edit_toast text-center">   
+</div>
+<div class="row justify-content-center">
+
+    <div class="col-md-8">
+        <form id="editForm" asp-action="_Edit" class="needs-validation" novalidate>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @if (!isDelete)
+            {
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">ID:</label>
+                    <div class="col-sm-9">
+                        <input asp-for="Id" class="form-control" readonly />
+                        <span asp-validation-for="Id" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Name:</label>
+                    <div class="col-sm-9">
+                        <input asp-for="Name" class="form-control" required />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Email:</label>
+                    <div class="col-sm-9">
+                        <input asp-for="Email" class="form-control" required />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Department:</label>
+                    <div class="col-sm-9">
+                        @Html.DropDownListFor(model => Model.Department, Html.GetEnumSelectList<Dept>(), "Select Department", new { @class = "form-control", required = "required" })
+                        <span asp-validation-for="Department" class="text-danger"></span>
+                    </div>
+                </div>
+            }
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Password:</label>
+                <div class="col-sm-9">
+                    <input asp-for="Password" id="password" class="form-control" type="password" required />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Confirm Password:</label>
+                <div class="col-sm-9">
+                    <input asp-for="ConfirmPassword" id="confirmpassword" class="form-control" type="password" required />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+            </div>          
+             @if (!isDelete)
+            {
+                <div class="form-group text-center">
+                    <div class="offset-sm-3 col-sm-9">
+                    <button type="button" id="saveDetailsBtn" class="btn btn-primary btnConfirm">Save Details</button>
+                </div>
+            </div>
+            }
+            @if (isDelete)
+            {
+                <div class="form-group text-center">
+                    <div class="offset-sm-3 col-sm-9">
+                        <button type="button" id="deleteEmployeeButton" data-employee-id="@Model.Id" class="btn btn-primary">Delete Details</button>
+                </div>
+            </div>
+            }
+        </form>
+    </div>
+</div>
+
+
+<div class="text-center">
+    <a asp-action="Index" class="btn btn-link backtolist">&lt- Back to List</a>
+</div>
+
+@section Scripts {
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

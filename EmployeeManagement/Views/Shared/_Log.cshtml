@@ -1,0 +1,29 @@
+﻿@model IEnumerable<EmployeeManagement.Models.Logger>
+
+
+<table class="table table-bordered">
+    <thead class="thead-dark">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.First().Timestamp)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Action)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Employee.Id)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Employee.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Employee.Email)</th>
+            <th>@Html.DisplayNameFor(model => model.First().Employee.Department)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var entry in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => entry.Timestamp)</td>
+                <td>@Html.DisplayFor(modelItem => entry.Action)</td>
+                <td>@Html.DisplayFor(modelItem => entry.Employee.Id)</td>
+                <td>@Html.DisplayFor(modelItem => entry.Employee.Name)</td>
+                <td>@Html.DisplayFor(modelItem => entry.Employee.Email)</td>
+                <td>@Html.DisplayFor(modelItem => entry.Employee.Department)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+

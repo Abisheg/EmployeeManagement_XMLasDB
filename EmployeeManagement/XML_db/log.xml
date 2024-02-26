@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <soapenv:Header />
+  <soapenv:Body>
+    <DatabaseRecords />
+  </soapenv:Body>
+  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+    <soapenv:Header />
+    <soapenv:Body>
+      <LogEntry>
+        <Timestamp>2024-02-26T13:35:27.9656398Z</Timestamp>
+        <Action>Employee Added</Action>
+        <Employee>
+          <Id>1</Id>
+          <Name>asd</Name>
+          <Email>asd</Email>
+          <Department>IT</Department>
+        </Employee>
+      </LogEntry>
+    </soapenv:Body>
+  </soapenv:Envelope>
+  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+    <soapenv:Header />
+    <soapenv:Body>
+      <LogEntry>
+        <Timestamp>2024-02-26T13:37:45.426095Z</Timestamp>
+        <Action>Updated From</Action>
+        <Employee>
+          <Id>1</Id>
+          <Name>asd</Name>
+          <Email>asd</Email>
+          <Department>IT</Department>
+        </Employee>
+      </LogEntry>
+    </soapenv:Body>
+  </soapenv:Envelope>
+  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+    <soapenv:Header />
+    <soapenv:Body>
+      <LogEntry>
+        <Timestamp>2024-02-26T13:37:45.4374287Z</Timestamp>
+        <Action>Updated To</Action>
+        <Employee>
+          <Id>1</Id>
+          <Name>asd</Name>
+          <Email>asdss</Email>
+          <Department>IT</Department>
+        </Employee>
+      </LogEntry>
+    </soapenv:Body>
+  </soapenv:Envelope>
+  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+    <soapenv:Header />
+    <soapenv:Body>
+      <LogEntry>
+        <Timestamp>2024-02-26T13:38:19.4398115Z</Timestamp>
+        <Action>Record Deleted</Action>
+        <Employee>
+          <Id>1</Id>
+          <Name>asd</Name>
+          <Email>asdss</Email>
+          <Department>IT</Department>
+        </Employee>
+      </LogEntry>
+    </soapenv:Body>
+  </soapenv:Envelope>
+  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+    <soapenv:Header />
+    <soapenv:Body>
+      <LogEntry>
+        <Timestamp>2024-02-26T13:40:32.9307287Z</Timestamp>
+        <Action>Employee Added</Action>
+        <Employee>
+          <Id>1</Id>
+          <Name>Mark</Name>
+          <Email>Mark@hotmil.com</Email>
+          <Department>IT</Department>
+        </Employee>
+      </LogEntry>
+    </soapenv:Body>
+  </soapenv:Envelope>
+  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+    <soapenv:Header />
+    <soapenv:Body>
+      <LogEntry>
+        <Timestamp>2024-02-26T13:40:54.4271544Z</Timestamp>
+        <Action>Employee Added</Action>
+        <Employee>
+          <Id>2</Id>
+          <Name>Param</Name>
+          <Email>param@hotmil.com</Email>
+          <Department>IT</Department>
+        </Employee>
+      </LogEntry>
+    </soapenv:Body>
+  </soapenv:Envelope>
+  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+    <soapenv:Header />
+    <soapenv:Body>
+      <LogEntry>
+        <Timestamp>2024-02-26T13:41:19.2833813Z</Timestamp>
+        <Action>Employee Added</Action>
+        <Employee>
+          <Id>3</Id>
+          <Name>Tom</Name>
+          <Email>Tom@hotmil.com</Email>
+          <Department>IT</Department>
+        </Employee>
+      </LogEntry>
+    </soapenv:Body>
+  </soapenv:Envelope>
+  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+    <soapenv:Header />
+    <soapenv:Body>
+      <LogEntry>
+        <Timestamp>2024-02-26T13:41:50.1901066Z</Timestamp>
+        <Action>Employee Added</Action>
+        <Employee>
+          <Id>4</Id>
+          <Name>Abisheg</Name>
+          <Email>abishegr97@gmail.com</Email>
+          <Department>IT</Department>
+        </Employee>
+      </LogEntry>
+    </soapenv:Body>
+  </soapenv:Envelope>
+  <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+    <soapenv:Header />
+    <soapenv:Body>
+      <LogEntry>
+        <Timestamp>2024-02-26T13:42:29.3690606Z</Timestamp>
+        <Action>Employee Added</Action>
+        <Employee>
+          <Id>5</Id>
+          <Name>SwatCats</Name>
+          <Email>swatcats@hotmail.com</Email>
+          <Department>HR</Department>
+        </Employee>
+      </LogEntry>
+    </soapenv:Body>
+  </soapenv:Envelope>
+</soapenv:Envelope>

@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">
+  <soapenv:Header />
+  <soapenv:Body>
+    <DatabaseRecords />
+  </soapenv:Body>
+  <DatabaseRecord>
+    <Timestamp>2024-02-26T13:40:32.9307181Z</Timestamp>
+    <Employee>
+      <Id>1</Id>
+      <Name>Mark</Name>
+      <Email>Mark@hotmil.com</Email>
+      <Department>IT</Department>
+    </Employee>
+  </DatabaseRecord>
+  <DatabaseRecord>
+    <Timestamp>2024-02-26T13:40:54.4271414Z</Timestamp>
+    <Employee>
+      <Id>2</Id>
+      <Name>Param</Name>
+      <Email>param@hotmil.com</Email>
+      <Department>IT</Department>
+    </Employee>
+  </DatabaseRecord>
+  <DatabaseRecord>
+    <Timestamp>2024-02-26T13:41:19.2833717Z</Timestamp>
+    <Employee>
+      <Id>3</Id>
+      <Name>Tom</Name>
+      <Email>Tom@hotmil.com</Email>
+      <Department>IT</Department>
+    </Employee>
+  </DatabaseRecord>
+  <DatabaseRecord>
+    <Timestamp>2024-02-26T13:41:50.1900967Z</Timestamp>
+    <Employee>
+      <Id>4</Id>
+      <Name>Abisheg</Name>
+      <Email>abishegr97@gmail.com</Email>
+      <Department>IT</Department>
+    </Employee>
+  </DatabaseRecord>
+  <DatabaseRecord>
+    <Timestamp>2024-02-26T13:42:29.3690382Z</Timestamp>
+    <Employee>
+      <Id>5</Id>
+      <Name>SwatCats</Name>
+      <Email>swatcats@hotmail.com</Email>
+      <Department>HR</Department>
+    </Employee>
+  </DatabaseRecord>
+</soapenv:Envelope>

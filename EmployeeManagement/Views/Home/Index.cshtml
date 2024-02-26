@@ -1,9 +1,16 @@
 ﻿@model IEnumerable<Employee>
 <div class="text-center">
-    <h1>Home</h1>
+    <h4>Employee Details</h4>
 
     <table class="table table-striped">
         <thead class="thead-dark">
+            <tr class="text-center">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><a class="btn-sm btn-primary" id="showLogs">Show Logs <i class="fa fa-search" aria-hidden="true"></i></a></td>
+            </tr>
             <tr>
                 <th scope="col">Id</th>
                 <th scope="col">Name</th>
@@ -23,22 +30,32 @@
                     <td>
                         <a asp-controller="Home" asp-action="Details" asp-route-id="@employee.Id" class="btn-sm btn-primary">View <i class="fa fa-eye" aria-hidden="true"></i></a>
 
-                        <a asp-controller="Home" asp-action="Edit" asp-route-id="@employee.Id" class="btn-sm btn-primary">Edit <i class="fa fa-edit" aria-hidden="true"></i></a>
+                        <a class="btn-sm btn-primary" id="editEmployeeButton" data-employee-id="@employee.Id">Edit <i class="fa fa-edit" aria-hidden="true"></i></a>
 
-                        <a asp-controller="Home" asp-action="Remove" asp-route-id="@employee.Id" class="btn-sm btn-danger">Remove <i class="fa fa-remove" aria-hidden="true"></i></a>
+                        <a id="removeEmployeeButton" data-employee-id="@employee.Id" class="btn-sm btn-danger">Remove <i class="fa fa-remove" aria-hidden="true"></i></a>
                     </td>
                 </tr>
             }
-
+            <tr class="text-center">
+                <td><a class="btn-sm btn-primary" id="addEmployeeButton">Add <i class="fa fa-plus" aria-hidden="true"></i></a></td>
+            </tr>
         </tbody>
     </table>
+    <div id="modalContainer">
+        <div class="modal fade" id="showPartialViewModal" tabindex="-1" role="dialog" aria-labelledby="showPartialViewModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <!-- Modal content will be dynamically loaded here -->
+                </div>
+            </div>
+        </div>
 
-    
-
+    </div>
+   
 </div>
 @section Scripts {
 
     <script src="~/js/Home.js"></script>
-   
+
 
 }
