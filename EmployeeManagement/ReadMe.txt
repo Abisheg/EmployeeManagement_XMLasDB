@@ -1,10 +1,12 @@
-﻿Objectives
+Password- pass#1﻿
+
+Objectives
 
 Your task is to enhance this basic ASP.NET Core 3.1 MVC project by implementing the following functionalities:
 1. Controller Action Methods
 
-    XML SOAP Response: Implement a controller action method that returns an XML SOAP packet.
-    JSON Response: Implement a controller action method that returns a JSON payload.
+    XML SOAP Response: Implement a controller action method that returns an XML SOAP packet. *- Have used SOAPXML schema for logging values and XML as database*
+    JSON Response: Implement a controller action method that returns a JSON payload.*Have used Json Payload for ajax calls to controller and also for toast messages*
 
 2. Model Binding
 
@@ -13,7 +15,7 @@ Create a model with the following properties and demonstrate model binding in a 
     Name
     Email
     Password
-
+*Created Views and Partial Views with model binding*
 3. Views Components
 
 Demonstrate your understanding of View components in ASP.NET Core MVC by implementing:
@@ -21,7 +23,7 @@ Demonstrate your understanding of View components in ASP.NET Core MVC by impleme
     Partial View: Create a reusable view component.
     Layout View: Design a master page that can be inherited by other views.
     _ViewStart.cshtml: Configure the application to use the Layout View by default.
-
+*Have Done the above*
 Key Concepts
 
 Please ensure your solution addresses the following ASP.NET Core MVC concepts:
